@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Monjaro Instrument Cluster</string>
+    <string name="theme_day">Day</string>
+    <string name="theme_night">Night</string>
+    <string name="cluster_mode_classic">Classic</string>
+    <string name="cluster_mode_minimal">Minimal</string>
+    <string name="cluster_mode_navigation">Navigation</string>
+    <string name="fuel_level">Fuel Level</string>
+    <string name="engine_temp">Engine Temperature</string>
+    <string name="odometer">Odometer</string>
+    <string name="trip_distance">Trip Distance</string>
+    <string name="cruise_control_active">Adaptive Cruise Control Active</string>
+    <string name="lane_departure_warning">Lane Departure Warning</string>
+    <string name="no_navigation">Navigation unavailable</string>
+</resources>

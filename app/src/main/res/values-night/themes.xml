@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.MonjaroInstrumentCluster" parent="Theme.MonjaroInstrumentCluster">
+        <item name="materialColorSurface">#121212</item>
+        <item name="materialColorOnSurface">@android:color/white</item>
+    </style>
+</resources>
