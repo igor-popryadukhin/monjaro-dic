@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.monjaro.dic"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.monjaro.dic"
@@ -52,6 +52,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    buildToolsVersion = "36.1.0"
 }
 
 dependencies {
@@ -69,6 +70,7 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.accompanist.systemuicontroller)
+    implementation(libs.google.android.material)
 
     testImplementation(kotlin("test"))
     androidTestImplementation(platform(libs.androidx.compose.bom))

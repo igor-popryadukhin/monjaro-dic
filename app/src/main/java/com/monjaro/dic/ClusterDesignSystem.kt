@@ -8,7 +8,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 object ClusterPalette {
-    val primary = Color(0xFF00BFA6)
+    val primary = Color(0xFF2196F3)
     val secondary = Color(0xFFFFB300)
     val backgroundDark = Color(0xFF05060B)
     val backgroundLight = Color(0xFFE6F4F1)
