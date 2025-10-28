@@ -6,7 +6,6 @@ import com.monjaro.dic.data.VehicleRepository
 import com.monjaro.dic.data.model.VehicleReadings
 import com.monjaro.dic.navigation.NavigationEvent
 import com.monjaro.dic.navigation.NavigationRepository
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
@@ -21,8 +20,6 @@ class ClusterViewModel(
         vehicleRepository.start()
     }
 
-    private val clusterMode = MutableStateFlow(ClusterMode.CLASSIC)
-
     val readings: StateFlow<VehicleReadings> = vehicleRepository
         .readings
         .stateIn(viewModelScope, kotlinx.coroutines.flow.SharingStarted.Eagerly, vehicleRepository.readings.value)
@@ -33,12 +30,10 @@ class ClusterViewModel(
     val uiState: StateFlow<ClusterUiState> = combine(
         readings,
         navigation,
-        clusterMode
-    ) { readings, navigation, mode ->
+    ) { readings, navigation ->
         ClusterUiState(
             readings = readings,
             navigation = navigation,
-            mode = mode,
             warnings = buildWarnings(readings)
         )
     }.stateIn(
@@ -47,14 +42,9 @@ class ClusterViewModel(
         initialValue = ClusterUiState(
             readings = readings.value,
             navigation = navigation.value,
-            mode = clusterMode.value,
             warnings = buildWarnings(readings.value)
         )
     )
-
-    fun selectMode(mode: ClusterMode) {
-        clusterMode.value = mode
-    }
 
     fun updateNavigation(event: NavigationEvent) {
         viewModelScope.launch {
@@ -93,11 +83,8 @@ class ClusterViewModel(
 data class ClusterUiState(
     val readings: VehicleReadings,
     val navigation: NavigationEvent,
-    val mode: ClusterMode,
     val warnings: List<ClusterWarning>
 )
-
-enum class ClusterMode { CLASSIC, MINIMAL, NAVIGATION }
 
 sealed interface ClusterWarning {
     data object LowFuel : ClusterWarning

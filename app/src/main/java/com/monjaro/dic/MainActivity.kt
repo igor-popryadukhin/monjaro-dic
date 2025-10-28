@@ -36,10 +36,9 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun InstrumentClusterApp(viewModel: ClusterViewModel) {
     val state by viewModel.uiState.collectAsState()
-    InstrumentClusterTheme(mode = state.mode) {
+    InstrumentClusterTheme {
         ClusterScaffold(
-            uiState = state,
-            onModeSelected = viewModel::selectMode
+            uiState = state
         )
     }
 }

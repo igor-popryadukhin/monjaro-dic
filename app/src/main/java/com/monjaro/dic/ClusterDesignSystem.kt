@@ -15,6 +15,7 @@ object ClusterPalette {
     val onBackground = Color.White
     val indicatorActive = Color(0xFF4CAF50)
     val warning = Color(0xFFFF5252)
+    val neon = Color(0xFF00BFFF)
 }
 
 val ClusterTypography = Typography(
